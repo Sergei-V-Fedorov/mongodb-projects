@@ -1,6 +1,12 @@
+import os
+from dotenv import load_dotenv
 from pymongo import MongoClient
 
-uri = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.4"
+load_dotenv()
+HOST = os.getenv("HOST")
+PORT = os.getenv("PORT")
+
+uri = f"mongodb://{HOST}:{PORT}/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.4"
 client = MongoClient(uri)
 
 db = client.testdb
